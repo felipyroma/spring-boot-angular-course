@@ -1,0 +1,31 @@
+<form action="">
+    <img src="/assets/person.png" alt="">
+
+    <input type="text" placeholder="Nome" class="form-control" name="nome"  [(ngModel)]="cliente.nome">
+    <input type="date" placeholder="Data de Nascimento" class="form-control" name="dtNascimento" [(ngModel)]="cliente.dtNascimento">
+    <input type="text" placeholder="Cidade" class="form-control" name="cidade" [(ngModel)]="cliente.cidade">
+
+    <input type="button" value="Cadastrar" *ngIf="btnCadastro" class="btn btn-primary" (click)="register()">
+    <input type="button" value="Alterar" *ngIf="!btnCadastro" class="btn btn-warning" (click)="edit()">
+    <input type="button" value="Remover" *ngIf="!btnCadastro" class="btn btn-danger" (click)="delete()">
+    <input type="button" value="Cancelar" *ngIf="!btnCadastro" class="btn btn-secondary" (click)="cancel()">
+</form>
+
+<section class="sec-table" *ngIf="tabela">
+    <div class="table">
+        <p class="p-title">#</p>
+        <p class="p-title">Nome</p>
+        <p class="p-title">Idade</p>
+        <p class="p-title">Cidade</p>
+        <p class="p-title">Selecionar</p>
+    </div>
+
+
+    <div *ngFor="let c of clientes; index as i" class="table">
+        <p>{{i + 1}}</p>
+        <p>{{c.nome}}</p>
+        <p>{{c.idade}}</p>
+        <p>{{c.cidade}}</p>
+        <button class="btn btn-success" (click)="selectEspecificClient(i)">Selecionar</button>
+    </div>
+</section>
